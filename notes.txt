@@ -1,0 +1,22 @@
+BASIC STRUCTURE OF THE PROGRAM:
+-> Basic IO of the db file
+    1- Loads database file
+    2- Takes run arguments, will either add/remove or output data contained in a db file (-o: outputs data; -a: adds data; -r: removes data)
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+
+////////////////////////////////////////
+Dynamically created struct?
