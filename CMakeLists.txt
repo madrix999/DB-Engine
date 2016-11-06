@@ -4,7 +4,7 @@ project(dbengine)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES
-    main.c
-    main.h Functions.c Functions.h)
+    "main.c"
+        "main.h" "Functions.c" "Functions.h")
 
 add_executable(dbengine ${SOURCE_FILES})
