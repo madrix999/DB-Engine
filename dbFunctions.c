@@ -1,5 +1,5 @@
 #include <stdbool.h>
-#include "Functions.h"
+#include "dbFunctions.h"
 
 int init() {
 	bool success = false;
