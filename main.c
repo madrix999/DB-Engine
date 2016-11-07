@@ -11,24 +11,31 @@ int main(int argc, char *argv[]) {
 	} if (argc != 2){
 		printf("Too many arguments given.\n");
 		return 0;
-	} if (check_parents(parent, argv[1]) == 0) {
-		
 	}
 	node_p * parent = NULL;
-	node_s * child = NULL;
+	node_c * child = NULL;
 	parent = malloc(sizeof(node_p));
-	child = malloc(sizeof(node_s));
+	child = malloc(sizeof(node_c));
 	if (parent && child == NULL) {
 		return 1;
 	}
 	
+	
 	parent->element[0] = "test";
 	parent->itemid = 0;
+	parent->child = NULL;
 	parent->next = NULL;
 	
 	add_parent_node(parent, 1, "Username");
 	add_parent_node(parent, 2, "Password");
 	
+	add_child(child, parent, 123, "testuser", 0, 1);
+	add_child(child, parent, 456, "testpass", 0, 2);
+	
+	if (check_parents(parent, argv[1]) == 0) {
+		printf("Invalid argument given.\n");
+		return 0;
+	}
 	
 	print_parent(parent, argv[1]);
 	

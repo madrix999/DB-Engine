@@ -5,20 +5,28 @@
 typedef struct parent {
 	int itemid;
 	struct parent * next;
+	struct parent * child;
 	char *element[];
 } node_p;
 
 // Children node, contains data and pointer to parent node
 typedef struct child {
 	int var;
+	int parentid;
 	int itemid;
 	struct parent * parent;
 	struct child * next;
-} node_s;
+	char *element[];
+} node_c;
 
 //void exit();
 void print_parent(node_p * parent, char *arg);
 void add_parent_node(node_p * parent, int id, char *element);
-int check_parents(node_p * parent, int *arg[]);
+
+void print_child(node_c * child, node_p * parent, char *arg);
+void add_child(node_c * child, node_p * parent, int var, char *arg[], int itemid, int parentid);
+void add_child_to_parent(node_p * parent, node_c * child);
+
+int check_parents(node_p * parent, char *arg[]);
 
 #endif
