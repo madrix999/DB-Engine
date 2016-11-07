@@ -10,11 +10,11 @@
 
 void print_parent(node_p * parent, char *arg) {
 	node_p * current = parent;
-	
+
 	while (strcmp(current->element[0], arg) != 0) {
 		current = current->next;
 	}
-	
+
 	printf("id: %d\telement: %s\tnext: %p\n", current->itemid, current->element[0], current->next);
 }
 
@@ -23,7 +23,7 @@ void add_parent_node(node_p * parent, int id, char *element) {
 	while (current->next != NULL) {
 		current = current->next;
 	}
-	
+
 	current->next = malloc(sizeof(node_p));
 	current = current->next;
 	current->itemid = id;
@@ -34,27 +34,27 @@ int check_parents(node_p * parent, char *arg[]) {
 	node_p * current = parent;
 	int x = 0;
 	char *str[x];
-	
+
 	while (current->next != NULL) {
 		str[x] = current->element[0];
 		x++;
 		current = current->next;
 	}
-	
+
 	for (int i = 0; i < x; i++) {
 		if (strcmp(str[i], arg) == 0) {
 			return 1;
 		}
 	}
-	
+
 	return 0;
 }
 
 void print_child(node_c * child, node_p * parent, char *parent_node) {
 	node_c * child_current = child;
 	node_p * parent_current = parent;
-	
-	
+
+
 }
 
 void add_child(node_c * child, node_p * parent, int var, char *arg[], int itemid, int parentid) {
@@ -85,5 +85,5 @@ void add_child(node_c * child, node_p * parent, int var, char *arg[], int itemid
 }
 
 void add_child_to_parent(node_p * parent, node_c * child) {
-	
+
 }
