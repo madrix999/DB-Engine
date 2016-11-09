@@ -25,7 +25,7 @@ void add_parent_node(node_p * parent, int id, char *element);
 
 void print_child(node_c * child, node_p * parent, char *arg);
 void add_child(node_c * child, node_p * parent, int var, char *arg[], int itemid, int parentid);
-void add_child_to_parent(node_p * parent, node_c * child);
+//void add_child_to_parent(node_p * parent, node_c * child);
 
 int check_parents(node_p * parent, char *arg[]);
 
