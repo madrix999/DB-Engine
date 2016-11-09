@@ -59,7 +59,7 @@ void print_child(node_c * child, node_p * parent, char *parent_node[]) {
 	}
 	
 	while (child->next != NULL) {
-		printf("id: %d\tparent id:%d\telement: %s\tnext: %p\tparent:%p\n", child_current->itemid, child_current->parentid child_current->element[0], child_current->next);
+		printf("id: %d\tparent id:%d\telement: %s\tnext: %p\tparent:%p\n", child_current->itemid, child_current->parentid, child_current->element[0], child_current->next);
 	}
 }
 
