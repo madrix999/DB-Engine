@@ -5,6 +5,7 @@
 typedef struct parent {
 	int itemid;
 	struct parent * next;
+	struct child * children;
 	char *element;
 } node_p;
 
@@ -15,13 +16,13 @@ typedef struct child {
 	int itemid;
 	struct parent * parent;
 	struct child * next;
-	char *element[];
+	char *element;
 } node_c;
 
 //void exit();
-int print_parent(node_p * parent, char *element);
+int print_parent(node_p * parent, node_c * child, char *element);
 void add_parent_node(node_p * parent, int id, char *element);
-//void add_child(node_c * child, node_p * parent, int var, char *arg, int itemid, int parentid);
+void add_child(node_c * child, int var, char *arg, int itemid, int parentid);
 
 //void add_child_to_parent(node_p * parent, node_c * child);
 

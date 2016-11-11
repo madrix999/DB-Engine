@@ -24,17 +24,17 @@ int main(int argc, char *argv[]) {
 
 	add_parent_node(parent, 1, "Username");
 	add_parent_node(parent, 2, "Password");
+	
+	child->var = 789;
+	child->parentid = 2;
+	child->itemid = 0;
+	child->element = "dafuq";
 
-	//add_child(child, parent, 123, "testuser", 0, 1);
-	//add_child(child, parent, 456, "testpass", 0, 2);
-
-	//if (check_parents(parent, argv[1]) == 0) {
-	//	printf("Invalid argument given.\n");
-	//	return 0;
-	//} else {
-		print_parent(parent, "Username");
-		return 0;
-	//}
+	add_child(child, 123, "testuser", 1, 1);
+	add_child(child, 456, "testpass", 2, 1);
+	
+	print_parent(parent, child, "Username");
+	return 0;
 }
 
 /*
