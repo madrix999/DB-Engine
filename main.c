@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 	child = malloc(sizeof(node_c));
 
 
-	parent->element[0] = "test";
+	parent->element = "test";
 	parent->itemid = 0;
 	parent->next = NULL;
 
@@ -28,14 +28,13 @@ int main(int argc, char *argv[]) {
 	//add_child(child, parent, 123, "testuser", 0, 1);
 	//add_child(child, parent, 456, "testpass", 0, 2);
 
-	/*if (check_parents(parent, argv[1]) == 0) {
-		printf("Invalid argument given.\n");
+	//if (check_parents(parent, argv[1]) == 0) {
+	//	printf("Invalid argument given.\n");
+	//	return 0;
+	//} else {
+		print_parent(parent, "Username");
 		return 0;
-	}*/
-
-	print_parent(parent, child, 1);
-
-	return 0;
+	//}
 }
 
 /*
