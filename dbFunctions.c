@@ -18,7 +18,7 @@ int print_parent(node_p * parent, node_c * child, char *element) {
 	
 	printf("id: %d\telement: %s\tnext: %p\n", current->itemid, current->element, current->next);
 	
-	while (child_current->next != NULL) {
+	while (child_current != NULL) {
 		if (child_current->parentid == current->itemid) {
 			printf("->id: %d\tparent id:%d\telement: %s\tvar: %d\tnext: %p\tparent:%p\n", child_current->itemid, child_current->parentid, child_current->element, child_current->var, child_current->next, current);
 		}
@@ -60,8 +60,6 @@ int check_parents(node_p * parent, char *arg[]) {
 
 	return 0;
 }
-
-
 
 void add_child(node_c * child, int var, char *arg, int itemid, int parentid) {
 	node_c * child_current = child;

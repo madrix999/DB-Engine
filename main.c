@@ -26,14 +26,21 @@ int main(int argc, char *argv[]) {
 	add_parent_node(parent, 2, "Password");
 	
 	child->var = 789;
-	child->parentid = 2;
+	child->parentid = 1;
 	child->itemid = 0;
 	child->element = "dafuq";
+	child->next = NULL;
 
 	add_child(child, 123, "testuser", 1, 1);
 	add_child(child, 456, "testpass", 2, 1);
+	add_child(child, 012, "wat", 3, 2);
+	add_child(child, 345, "wut", 4, 2);
 	
 	print_parent(parent, child, "Username");
+	printf("\n");
+	print_parent(parent, child, "Password");
+	
+	
 	return 0;
 }
 
