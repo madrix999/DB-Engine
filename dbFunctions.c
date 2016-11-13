@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include "dbFunctions.h"
+#include "main.h"
 
 /*void exit() {
 	// Write database structure to file
@@ -41,7 +42,7 @@ void add_parent_node(node_p * parent, int id, char *element) {
 	current->next = NULL;
 }
 
-int check_parents(node_p * parent, char *arg[]) {
+int check_parents(node_p * parent, char *arg) {
 	node_p * current = parent;
 	int x = 0;
 	char *str[x];
@@ -53,7 +54,7 @@ int check_parents(node_p * parent, char *arg[]) {
 	}
 
 	for (int i = 0; i < x; i++) {
-		if (strcmp(str[i], arg[1]) == 0) {
+		if (strcmp(str[i], arg) == 0) {
 			return 1;
 		}
 	}
@@ -77,6 +78,157 @@ void add_child(node_c * child, int var, char *arg, int itemid, int parentid) {
 	child_current->next = NULL;
 }
 
-/*void add_child_to_parent(node_p * parent, node_c * child) {
+int init(node_p * parent, node_c * child) {
+	node_p * temp_parent = NULL;
+	node_c * temp_child = NULL;
+	int parent_added = 0;
+	char *prparent;
+	char *input[256];
+	int exit = 0;
+	
+	while (exit == 0) {
+		printf("Command: ");
+		if (parent_added >= 1) {
+			scanf("%s", input);
+			getchar();
+			
+			if (strcmp(input[0], "parent") == 0) {
+				temp_parent = malloc(sizeof(node_p));
+				
+				printf("id: ");
+				scanf("%d\n", &temp_parent->itemid);
+				
+				printf("element: ");
+				scanf("%s\n", temp_parent->element);
+				
+				add_parent_node(parent, temp_parent->itemid, temp_parent->element);
+				free(temp_parent);
+				printf("Command: ");
+			} else if (strcmp(input[0], "child") == 0) {
+				temp_child = malloc(sizeof(node_c));
+				
+				printf("var: ");
+				scanf("%d", &temp_child->var);
+				
+				printf("itemid: ");
+				scanf("%d", &temp_child->itemid);
+				
+				printf("element: ");
+				scanf("%s", temp_child->element);
+				
+				printf("parent id: ");
+				scanf("%d", &temp_child->parentid);
+				
+				add_child(child, temp_child->var, temp_child->element, temp_child->itemid, temp_child->parentid);
+				free(temp_child);
+				printf("Command: ");
+			} else if (strcmp(input[0], "print") == 0) {
+				printf("Parent: ");
+				scanf("%s", prparent);
+				if (check_parents(parent, prparent) != 0) {
+					printf("No parent node matches to %s\n", prparent);
+					break;
+				} else {
+					print_parent(parent, child, prparent);
+					printf("Command: ");
+				}
+			} else if(strcmp(input[0], "exit") == 0) {
+				
+				
+			} else{
+				printf("retry.\n");
+			}
+		} else {
+			printf("Add a parent!\n\n");
+			temp_parent = malloc(sizeof(node_p));
+			
+			
+			
+			printf("id: ");
+			scanf("%d", &temp_parent->itemid);
+			getchar();
+			
+			printf("element: ");
+			scanf("%s", temp_parent->element);
+			getchar();
+			
+			add_parent_node(parent, temp_parent->itemid, temp_parent->element);
+			free(temp_parent);
+			parent_added = 1;
+			printf("Command: ");
+		}
+	}
+	
+	
+}
 
-}*/
+/*
+while (strcmp(&input, "exit") != 0) {
+		printf("Command: ");
+		if (parent_added >= 1) {
+			scanf("%s", &input);
+			getchar();
+			
+			if (input == "parent") {
+				temp_parent = malloc(sizeof(node_p));
+				
+				printf("id: ");
+				scanf("%d\n", &temp_parent->itemid);
+				
+				printf("element: ");
+				scanf("%s\n", temp_parent->element);
+				
+				add_parent_node(parent, temp_parent->itemid, temp_parent->element);
+				free(temp_parent);
+				printf("Command: ");
+			} else if (input == "child") {
+				temp_child = malloc(sizeof(node_c));
+				
+				printf("var: ");
+				scanf("%d", &temp_child->var);
+				
+				printf("itemid: ");
+				scanf("%d", &temp_child->itemid);
+				
+				printf("element: ");
+				scanf("%s", temp_child->element);
+				
+				printf("parent id: ");
+				scanf("%d", &temp_child->parentid);
+				
+				add_child(child, temp_child->var, temp_child->element, temp_child->itemid, temp_child->parentid);
+				free(temp_child);
+				printf("Command: ");
+			} else if (input == "print") {
+				printf("Parent: ");
+				scanf("%s", prparent);
+				if (check_parents(parent, prparent) != 0) {
+					
+				} else {
+					print_parent(parent, child, prparent);
+					printf("Command: ");
+				}
+			} else{
+				printf("retry.\n");
+			}
+		} else {
+			printf("Add a parent!\n\n");
+			temp_parent = malloc(sizeof(node_p));
+			
+			
+			
+			printf("id: ");
+			scanf("%d", &temp_parent->itemid);
+			getchar();
+			
+			printf("element: ");
+			scanf("%s", temp_parent->element);
+			getchar();
+			
+			add_parent_node(parent, temp_parent->itemid, temp_parent->element);
+			free(temp_parent);
+			parent_added = 1;
+			printf("Command: ");
+		}
+	}
+ */

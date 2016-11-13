@@ -3,49 +3,38 @@
 #include <stdbool.h>
 #include <string.h>
 #include "dbFunctions.h"
+#include "main.h"
 
 int main(int argc, char *argv[]) {
-	if (argc == 1) {
-		printf("No arguments given.\n");
-		return 0;
-	} if (argc != 2){
-		printf("Too many arguments given.\n");
+	if (argc > 1) {
+		printf("Do not run the program with arguments!");
 		return 0;
 	}
+	// Init and malloc parent and child nodes
 	node_p * parent = NULL;
 	node_c * child = NULL;
 	parent = malloc(sizeof(node_p));
 	child = malloc(sizeof(node_c));
 
-
-	parent->element = "test";
+	// Default parent and child node, will not be printed to database file.
+	parent->element = "parent";
 	parent->itemid = 0;
 	parent->next = NULL;
-
-	add_parent_node(parent, 1, "Username");
-	add_parent_node(parent, 2, "Password");
 	
-	child->var = 789;
-	child->parentid = 1;
-	child->itemid = 0;
-	child->element = "dafuq";
+	child->var = NULL;
+	child->parentid = 0;
+	child->itemid = NULL;
+	child->element = NULL;
 	child->next = NULL;
-
-	add_child(child, 123, "testuser", 1, 1);
-	add_child(child, 456, "testpass", 2, 1);
-	add_child(child, 012, "wat", 3, 2);
-	add_child(child, 345, "wut", 4, 2);
 	
-	print_parent(parent, child, "Username");
-	printf("\n");
-	print_parent(parent, child, "Password");
-	
+	init(parent, child);
 	
 	return 0;
 }
 
 /*
-if (parent && child == NULL) {
-	return 1;
+if (argc != 2){
+	printf("Too many arguments given.\n");
+	return 0;
 }
 */
