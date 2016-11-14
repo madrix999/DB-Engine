@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 	child = malloc(sizeof(node_c));
 
 	// Default parent and child node, will not be printed to database file.
-	parent->element = "parent";
+	parent->element = NULL;
 	parent->itemid = 0;
 	parent->next = NULL;
 	

@@ -95,17 +95,18 @@ int init(node_p * parent, node_c * child) {
 	node_p *temp_parent = NULL;
 	node_c *temp_child = NULL;
 	int parent_added = 0;
-	char input;
+	char input[1];
 	int exit = 0;
 	char *prparent;
 	
 	while (exit == 0) {
-		input = NULL;
+		input[0] = NULL;
+		input[1] = NULL;
 		printf("dbengine=> ");
 		scanf("%c", &input);
 		getchar();
 		
-		if (input == 'p') {
+		if (input[0] == 'p') {
 			temp_parent = malloc(sizeof(node_p));
 			
 			printf("\nid: ");
@@ -116,8 +117,9 @@ int init(node_p * parent, node_c * child) {
 			
 			add_parent_node(parent, temp_parent->itemid, temp_parent->element);
 			free(temp_parent);
-			input = NULL;
-		} if (input == 'c') {
+			input[0] = NULL;
+			input[1] = NULL;
+		} if (input[0] == 'c') {
 			temp_child = malloc(sizeof(node_c));
 			
 			printf("var: ");
@@ -134,20 +136,24 @@ int init(node_p * parent, node_c * child) {
 			
 			add_child(child, temp_child->var, temp_child->element, temp_child->itemid, temp_child->parentid);
 			free(temp_child);
-			input = NULL;
-		} if (input == 'o') {
+			input[0] = NULL;
+			input[1] = NULL;
+		} if (input[0] == 'o') {
 			print_parent(parent, child);
-			input = NULL;
-		} if (input == 'e') {
-			input = NULL;
+			input[0] = NULL;
+			input[1] = NULL;
+		} if (input[0] == 'e') {
+			input[0] = NULL;
+			input[1] = NULL;
 			exit = 1;
-		} if (input == 'h') {
+		} if (input[0] == 'h') {
 			printf("h: help\n");
 			printf("p: add parent node\n");
 			printf("c: add child node\n");
 			printf("o: output db\n");
 			printf("e: output db to file and exit\n");
-			input = NULL;
+			input[0] = NULL;
+			input[1] = NULL;
 		}
 	}
 	
