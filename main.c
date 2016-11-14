@@ -31,10 +31,3 @@ int main(int argc, char *argv[]) {
 	
 	return 0;
 }
-
-/*
-if (argc != 2){
-	printf("Too many arguments given.\n");
-	return 0;
-}
-*/

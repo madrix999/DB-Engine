@@ -5,4 +5,4 @@
 #ifndef DBENGINE_MAIN_H
 #define DBENGINE_MAIN_H
 
-#endif //DBENGINE_MAIN_H
+#endif
