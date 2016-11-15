@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-//#include <fcgi_stdio.h>
 #include "dbFunctions.h"
 #include "main.h"
 
@@ -104,11 +103,11 @@ int init(node_p * parent, node_c * child) {
 		if (input[0] == 'p') {
 			temp_parent = malloc(sizeof(node_p));
 			
-			printf("\nid: ");
-			scanf("%d", &temp_parent->itemid);
-			
 			printf("\nelement: ");
 			scanf("%s", temp_parent->element);
+			
+			printf("\nid: ");
+			scanf("%d", &temp_parent->itemid);
 			
 			add_parent_node(parent, temp_parent->itemid, temp_parent->element);
 			free(temp_parent);
@@ -145,8 +144,3 @@ int init(node_p * parent, node_c * child) {
 	
 	return 0;
 }
-/*
- *  else {
-			printf("retry...\n\n");
-		}
- */
