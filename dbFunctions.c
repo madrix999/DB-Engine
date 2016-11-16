@@ -97,23 +97,22 @@ int init(node_p * parent, node_c * child) {
 	int exit = 0;
 	
 	while (exit == 0) {
+			temp_parent = malloc(sizeof(node_p));
+			temp_child = malloc(sizeof(node_c));
 		printf("dbengine=> ");
 		scanf("%c", &input[0]);
 		
 		if (input[0] == 'p') {
-			temp_parent = malloc(sizeof(node_p));
+			printf("\nid: ");
+			scanf("%d", &temp_parent->itemid);
 			
 			printf("\nelement: ");
 			scanf("%s", temp_parent->element);
-			
-			printf("\nid: ");
-			scanf("%d", &temp_parent->itemid);
 			
 			add_parent_node(parent, temp_parent->itemid, temp_parent->element);
 			free(temp_parent);
 			memset(input, 0, sizeof(input));
 		} else if (input[0] == 'c') {
-			temp_child = malloc(sizeof(node_c));
 			
 			printf("var: ");
 			scanf("%d", &temp_child->var);
