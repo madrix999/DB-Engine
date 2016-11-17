@@ -89,18 +89,19 @@ void init(node_p * parent, node_c * child) {
 		input = malloc(sizeof(buffer));
 		scanf("%s", input);
 		
-		if (input == "parent") {
+		if (strcmp(input, "parent") == 0) {
 			ptemp = malloc(sizeof(node_p));
 			
+			printf("Id: ");
 			scanf("%d", &ptemp->itemid);
+			printf("\nElement:");
 			scanf("%s", ptemp->element);
 			
 			add_parent_node(parent, ptemp->itemid, ptemp->element);
 			
 			free(ptemp);
 			free(input);
-		} 	
-		if (input == "child") {
+		} else if (input == "child") {
 			ctemp = malloc(sizeof(node_c));
 			
 			scanf("%d", &ctemp->var);
@@ -112,10 +113,11 @@ void init(node_p * parent, node_c * child) {
 			
 			free(ctemp);
 			free(input);
-		}
-		if (input == "output") {
+		} else if (input == "output") {
 			print_parent(parent, child);
 			free(input);
+		} else if (input == "exit") {
+			exit = 1;
 		}
 	}
 }
