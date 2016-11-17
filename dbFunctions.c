@@ -93,14 +93,14 @@ void add_child(node_c * child, int var, char *arg, int itemid, int parentid) {
 int init(node_p * parent, node_c * child) {
 	node_p *temp_parent = NULL;
 	node_c *temp_child = NULL;
-	char input[256] = {0};
+	char *input;
 	int exit = 0;
 	
 	while (exit == 0) {
 			temp_parent = malloc(sizeof(node_p));
 			temp_child = malloc(sizeof(node_c));
 		printf("dbengine=> ");
-		scanf("%c", &input[0]);
+		scanf("%s", &input[0]);
 		
 		if (input[0] == 'p') {
 			printf("\nid: ");
@@ -109,7 +109,14 @@ int init(node_p * parent, node_c * child) {
 			printf("\nelement: ");
 			scanf("%s", temp_parent->element);
 			
+<<<<<<< HEAD
 			add_parent_node(parent, temp_parent->itemid, temp_parent->element);
+=======
+			printf("\nid: ");
+			scanf("%d", &temp_parent->itemid);
+			
+			add_parent_node(parent, temp_parent->itemid, );
+>>>>>>> 709a668ee0a40a44363df9e3796a707e853e99b5
 			free(temp_parent);
 			memset(input, 0, sizeof(input));
 		} else if (input[0] == 'c') {
