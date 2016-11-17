@@ -23,11 +23,11 @@ typedef struct child {
 
 
 //void exit();
-int print_parent(node_p * parent, node_c * child/*, char *element*/);
+int print_parent(node_p * parent, node_c * child);
 void add_parent_node(node_p * parent, int id, char *element);
 void add_child(node_c * child, int var, char *arg, int itemid, int parentid);
 
 int check_parents(node_p * parent, char *arg);
 
-int init(node_p * parent, node_c * child);
+void init(node_p * parent, node_c * child);
 #endif

@@ -9,24 +9,9 @@
 	// Write database structure to file
 }*/
 
-int print_parent(node_p * parent, node_c * child/*, char *element*/) {
+int print_parent(node_p * parent, node_c * child) {
 	node_p * current = parent;
 	node_c * child_current = child;
-	
-	/*while (strcmp(element, current->element) != 0) {
-		current = current->next;
-	}
-	
-	printf("id: %d\telement: %s\tnext: %p\n", current->itemid, current->element, current->next);
-	
-	while (child_current != NULL) {
-		if (child_current->parentid == current->itemid) {
-			printf("->id: %d\tparent id:%d\telement: %s\tvar: %d\tnext: %p\tparent:%p\n", child_current->itemid, child_current->parentid, child_current->element, child_current->var, child_current->next, current);
-		}
-		child_current = child_current->next;
-	}
-	
-	return 0;*/
 	
 	while (current->next != NULL) {
 		printf("id: %d\telement: %s\tnext: %p\n", current->itemid, current->element, current->next);
@@ -90,63 +75,47 @@ void add_child(node_c * child, int var, char *arg, int itemid, int parentid) {
 	child_current->next = NULL;
 }
 
-int init(node_p * parent, node_c * child) {
-	node_p *temp_parent = NULL;
-	node_c *temp_child = NULL;
-	char *input;
+	
+void init(node_p * parent, node_c * child) {
+	node_p * ptemp = parent;
+	node_c * ctemp = child;
+	ptemp = NULL;
+	ctemp = NULL;
 	int exit = 0;
+	char buffer[256] = {0};
+	char *input;
 	
 	while (exit == 0) {
-			temp_parent = malloc(sizeof(node_p));
-			temp_child = malloc(sizeof(node_c));
-		printf("dbengine=> ");
-		scanf("%s", &input[0]);
+		input = malloc(sizeof(buffer));
+		scanf("%s", input);
 		
-		if (input[0] == 'p') {
-			printf("\nid: ");
-			scanf("%d", &temp_parent->itemid);
+		if (input == "parent") {
+			ptemp = malloc(sizeof(node_p));
 			
-			printf("\nelement: ");
-			scanf("%s", temp_parent->element);
+			scanf("%d", &ptemp->itemid);
+			scanf("%s", ptemp->element);
 			
-<<<<<<< HEAD
-			add_parent_node(parent, temp_parent->itemid, temp_parent->element);
-=======
-			printf("\nid: ");
-			scanf("%d", &temp_parent->itemid);
+			add_parent_node(parent, ptemp->itemid, ptemp->element);
 			
-			add_parent_node(parent, temp_parent->itemid, );
->>>>>>> 709a668ee0a40a44363df9e3796a707e853e99b5
-			free(temp_parent);
-			memset(input, 0, sizeof(input));
-		} else if (input[0] == 'c') {
+			free(ptemp);
+			free(input);
+		} 	
+		if (input == "child") {
+			ctemp = malloc(sizeof(node_c));
 			
-			printf("var: ");
-			scanf("%d", &temp_child->var);
+			scanf("%d", &ctemp->var);
+			scanf("%s", ctemp->element);
+			scanf("%d", &ctemp->itemid);
+			scanf("%d", &ctemp->parentid);
 			
-			printf("itemid: ");
-			scanf("%d", &temp_child->itemid);
+			add_child(child, ctemp->var, ctemp->element, ctemp->itemid, ctemp->parentid);
 			
-			printf("element: ");
-			scanf("%s", temp_child->element);
-			
-			printf("parent id: ");
-			scanf("%d", &temp_child->parentid);
-			
-			add_child(child, temp_child->var, temp_child->element, temp_child->itemid, temp_child->parentid);
-			free(temp_child);
-		} else if (input[0] == 'o') {
+			free(ctemp);
+			free(input);
+		}
+		if (input == "output") {
 			print_parent(parent, child);
-		} else if (input[0] == 'e') {
-			exit = 1;
-		} else if (input[0] == 'h') {
-			printf("h: help\n");
-			printf("p: add parent node\n");
-			printf("c: add child node\n");
-			printf("o: output db\n");
-			printf("e: output db to file and exit\n");
+			free(input);
 		}
 	}
-	
-	return 0;
 }

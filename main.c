@@ -27,6 +27,8 @@ int main(int argc, char *argv[]) {
 	child->element = NULL;
 	child->next = NULL;
 	
+	print_parent(parent, child);
+	
 	init(parent, child);
 	
 	return 0;
