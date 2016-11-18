@@ -17,14 +17,14 @@ int main(int argc, char *argv[]) {
 	child = malloc(sizeof(node_c));
 
 	// Default parent and child node, will not be printed to database file.
-	parent->element = NULL;
+	parent->element[0] = "test";
 	parent->itemid = 0;
 	parent->next = NULL;
 	
-	child->var = NULL;
+	child->var = 123;
 	child->parentid = 0;
-	child->itemid = NULL;
-	child->element = NULL;
+	child->itemid = 0;
+	child->element = "test";
 	child->next = NULL;
 	
 	print_parent(parent, child);
