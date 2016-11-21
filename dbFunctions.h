@@ -30,4 +30,6 @@ void add_child(node_c * child, int var, char *arg, int itemid, int parentid);
 int check_parents(node_p * parent, char *arg);
 
 void init(node_p * parent, node_c * child);
+
+char *input();
 #endif
