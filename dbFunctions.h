@@ -26,10 +26,9 @@ typedef struct child {
 void print_parent(node_p * parent, node_c * child);
 void add_parent_node(node_p * parent, int id, char *element);
 void add_child(node_c * child, int var, char *arg, int itemid, int parentid);
-
-int check_parents(node_p * parent, char *arg);
-
 void init(node_p * parent, node_c * child);
-
+int commands(char *cmd, node_p * parent, node_c * child);
+int check_parents(node_p * parent, char *arg);
 char *input();
+
 #endif
