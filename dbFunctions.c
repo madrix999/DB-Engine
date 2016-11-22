@@ -77,28 +77,21 @@ void add_child(node_c * child, int var, char *arg, int itemid, int parentid) {
 void init(node_p * parent, node_c * child) {
 	node_p * ptemp = parent;
 	node_c * ctemp = child;
-	ptemp = NULL;
-	ctemp = NULL;
 	int exit = 0;
-	char input[256] = {0};
 	
 	while (exit == 0) {
-		scanf("%255s", input);
-		
-		if (strcmp(input, "parent") == 0) {
-			char input[256] = {0};
+		if (strcmp(input(), "parent") == 0) {
 			ptemp = malloc(sizeof(node_p));
 			
 			printf("Id: ");
 			scanf("%d", &ptemp->itemid);
 			printf("\nElement:");
-			scanf("%255s", ptemp->element[0]);
+			scanf("%255s", ptemp->element);
 			
 			add_parent_node(parent, ptemp->itemid, ptemp->element);
 			
 			free(ptemp);
-		} else if (strcmp(input, "child") == 0) {
-			char input[256] = {0};
+		} else if (strcmp(input(), "child") == 0) {
 			ctemp = malloc(sizeof(node_c));
 			
 			scanf("%d", &ctemp->var);
@@ -109,11 +102,9 @@ void init(node_p * parent, node_c * child) {
 			add_child(child, ctemp->var, ctemp->element, ctemp->itemid, ctemp->parentid);
 			
 			free(ctemp);
-		} else if (strcmp(input, "output") == 0) {
-			char input[256] = {0};
+		} else if (strcmp(input(), "output") == 0) {
 			print_parent(parent, child);
-		} else if (strcmp(input, "exit") == 0) {
-			char input[256] = {0};
+		} else if (strcmp(input(), "exit") == 0) {
 			exit = 1;
 		}
 	}
@@ -131,7 +122,7 @@ char *input() {
 			ch = 0;
 		/* Check if we need to expand. */
 		if (size <= index) {
-			size += CHUNK;
+			size += 1;
 			tmp = realloc(line, size);
 			if (!tmp) {
 				free(line);
@@ -143,5 +134,5 @@ char *input() {
 		/* Actually store the thing. */
 		line[index++] = ch;
 	}
-return line;
+	return line;
 }
