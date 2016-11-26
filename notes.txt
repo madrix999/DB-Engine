@@ -1,0 +1,31 @@
+BASIC STRUCTURE OF THE PROGRAM:
+-> Basic IO of the db file
+    1- Loads database file
+    2- Takes run arguments, will either add/remove or output data contained in a db file (-o: outputs data; -a: adds data; -r: removes data)
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+->
+
+////////////////////////////////////////
+Dynamically created struct?
+
+
+error: failed to commit transaction (conflicting files)
+ttf-dejavu: /etc/fonts/conf.d/20-unhint-small-dejavu-sans-mono.conf exists in filesystem
+ttf-dejavu: /etc/fonts/conf.d/20-unhint-small-dejavu-sans.conf exists in filesystem
+ttf-dejavu: /etc/fonts/conf.d/20-unhint-small-dejavu-serif.conf exists in filesystem
+ttf-dejavu: /etc/fonts/conf.d/57-dejavu-sans-mono.conf exists in filesystem
+ttf-dejavu: /etc/fonts/conf.d/57-dejavu-sans.conf exists in filesystem
+ttf-dejavu: /etc/fonts/conf.d/57-dejavu-serif.conf exists in filesystem
