@@ -31,4 +31,6 @@ int commands(char *cmd, node_p * parent, node_c * child);
 int check_parents(node_p * parent, char *arg);
 char *input();
 
+void cmdParent(node_p * parent);
+void cmdChild(node_c * child);
 #endif
