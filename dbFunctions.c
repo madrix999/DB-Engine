@@ -33,7 +33,7 @@ void add_parent_node(node_p * parent, int id, char *element) {
 
 	current->next = malloc(sizeof(node_p));
 	current->next->itemid = id;
-	current->next->element[0] = element;
+	current->next->element = element;
 	current->next->next = NULL;
 }
 
@@ -107,7 +107,6 @@ void init(node_p * parent, node_c * child) {
 }
 
 int commands(char *cmd, node_p * parent, node_c * child) {
-	
 	if (strcmp(cmd, "parent") == 0) {
 		cmdParent(parent);
 		return 0;
@@ -129,8 +128,8 @@ void cmdParent(node_p * parent) {
 	
 	printf("Id: ");
 	scanf("%d", &ptemp->itemid);
-	printf("\nElement:");
-	scanf("%s", ptemp->element);
+	printf("\nElement: ");
+	ptemp->element = input();
 	
 	add_parent_node(parent, ptemp->itemid, ptemp->element);
 	
@@ -144,7 +143,7 @@ void cmdChild(node_c * child) {
 	printf("Var: ");
 	scanf("%d", &ctemp->var);
 	printf("\nElement: ");
-	scanf("%s", ctemp->element);
+	ctemp->element = input();
 	printf("\nID: ");
 	scanf("%d", &ctemp->itemid);
 	printf("\nParent ID: ");
