@@ -4,17 +4,13 @@
 #include "dbFunctions.h"
 #include "main.h"
 
-/*void exit() {
-	// Write database structure to file
-}*/
-
 void print_parent(node_p * parent, node_c * child) {
 	node_p * current = parent;
 	node_c * child_current = child;
 
 	while (current->next != NULL) {
 		printf("id: %d\telement: %s\tnext: %p\n", current->itemid, current->element, current->next);
-		while (child_current != NULL) {
+		while (child_current->next != NULL) {
 			if (child_current->parentid == current->itemid) {
 				printf("->id: %d\tparent id:%d\telement: %s\tvar: %d\tnext: %p\tparent:%p\n", child_current->itemid, child_current->parentid, child_current->element, child_current->var, child_current->next, current);
 			}
