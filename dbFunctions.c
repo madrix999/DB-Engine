@@ -55,11 +55,11 @@ int check_parents(node_p * parent, char *arg) {
 
 void add_child(node_c * child, int var, char *arg, int itemid, int parentid) {
 	node_c * child_current = child;
-	
+
 	while (child_current->next != NULL) {
 		child_current = child_current->next;
 	}
-	
+
 	child_current->next = malloc(sizeof(node_c));
 	child_current = child_current->next;
 	child_current->itemid = itemid;
@@ -73,7 +73,7 @@ char *input() {
 	char *line = NULL, *tmp = NULL;
 	size_t size = 0, index = 0;
 	int ch = EOF;
-	
+
 	while (ch) {
 		ch = getc(stdin);
 		/* Check if we need to stop. */
@@ -121,33 +121,33 @@ int commands(char *cmd, node_p * parent, node_c * child) {
 void cmdParent(node_p * parent) {
 	node_p * ptemp = parent;
 	ptemp = malloc(sizeof(node_p));
-	
+
 	printf("Id: ");
 	scanf("%d", &ptemp->itemid);
 	printf("\nElement: ");
 	ptemp->element = input();
 	getchar();
-	
+
 	add_parent_node(parent, ptemp->itemid, ptemp->element);
-	
+
 	free(ptemp);
 }
 
 void cmdChild(node_c * child) {
 	node_c * ctemp = child;
 	ctemp = malloc(sizeof(node_c));
-	
+
 	printf("Var: ");
 	scanf("%d", &ctemp->var);
-	printf("\nElement: ");
-	ctemp->element = input();
-	getchar();
 	printf("\nID: ");
 	scanf("%d", &ctemp->itemid);
 	printf("\nParent ID: ");
 	scanf("%d", &ctemp->parentid);
-	
+	printf("\nElement: ");
+	ctemp->element = input();
+	getchar();
+
 	add_child(child, ctemp->var, ctemp->element, ctemp->itemid, ctemp->parentid);
-	
+
 	free(ctemp);
 }

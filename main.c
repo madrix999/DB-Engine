@@ -20,16 +20,16 @@ int main(int argc, char *argv[]) {
 	parent->element = "test";
 	parent->itemid = 0;
 	parent->next = NULL;
-	
+
 	child->var = 123;
 	child->parentid = 0;
 	child->itemid = 0;
 	child->element = "test";
 	child->next = NULL;
-	
+
 	print_parent(parent, child);
-	
+
 	init(parent, child);
-	
+
 	return 0;
 }
