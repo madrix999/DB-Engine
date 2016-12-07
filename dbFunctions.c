@@ -8,7 +8,7 @@ void print_parent(node_p * parent, node_c * child) {
 	node_p * current = parent;
 	node_c * child_current = child;
 
-	while (current->next != NULL) {
+	while (current != NULL) {
 		printf("id: %d\telement: %s\tnext: %p\n", current->itemid, current->element, current->next);
 		while (child_current->next != NULL) {
 			if (child_current->parentid == current->itemid) {
