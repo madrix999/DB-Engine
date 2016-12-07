@@ -20,14 +20,20 @@ int main(int argc, char *argv[]) {
 	parent->element = "test";
 	parent->itemid = 0;
 	parent->next = NULL;
-	
+
 	child->var = 123;
 	child->parentid = 0;
 	child->itemid = 0;
 	child->element = "test";
 	child->next = NULL;
+<<<<<<< HEAD
 	
+=======
+
+	print_parent(parent, child);
+
+>>>>>>> 0092189c709a4c7884de4cc29c3bf75598d12915
 	init(parent, child);
-	
+
 	return 0;
 }
