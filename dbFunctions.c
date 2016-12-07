@@ -125,7 +125,6 @@ void cmdParent(node_p * parent) {
 
 	printf("Id: ");
 	scanf("%d", &ptemp->itemid);
-	ptemp->element = malloc(sizeof(int));
 	printf("\nElement: ");
 	ptemp->element = input();
 
@@ -144,7 +143,6 @@ void cmdChild(node_c * child) {
 	scanf("%d", &ctemp->itemid);
 	printf("\nParent ID: ");
 	scanf("%d", &ctemp->parentid);
-	ctemp->element = malloc(sizeof(int));
 	printf("\nElement: ");
 	ctemp->element = input();
 
