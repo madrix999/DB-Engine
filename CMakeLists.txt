@@ -6,6 +6,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 set(SOURCE_FILES
         "main.c"
         "dbFunctions.c"
-        "dbFunctions.h" main.h)
+        "dbFunctions.h")
 
 add_executable(dbengine ${SOURCE_FILES})

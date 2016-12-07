@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "dbFunctions.h"
-#include "main.h"
 
 void print_parent(node_p * parent, node_c * child) {
 	node_p * current = parent;
@@ -10,7 +9,7 @@ void print_parent(node_p * parent, node_c * child) {
 
 	while (current != NULL) {
 		printf("id: %d\telement: %s\tnext: %p\n", current->itemid, current->element, current->next);
-		while (child_current->next != NULL) {
+		while (child_current != NULL) {
 			if (child_current->parentid == current->itemid) {
 				printf("->id: %d\tparent id:%d\telement: %s\tvar: %d\tnext: %p\tparent:%p\n", child_current->itemid, child_current->parentid, child_current->element, child_current->var, child_current->next, current);
 			}
@@ -28,9 +27,10 @@ void add_parent_node(node_p * parent, int id, char *element) {
 	}
 
 	current->next = malloc(sizeof(node_p));
-	current->next->itemid = id;
-	current->next->element = element;
-	current->next->next = NULL;
+	current = current->next;
+    current->itemid = id;
+	current->element = element;
+	current->next = NULL;
 }
 
 int check_parents(node_p * parent, char *arg) {
@@ -53,7 +53,7 @@ int check_parents(node_p * parent, char *arg) {
 	return 0;
 }
 
-void add_child(node_c * child, int var, char *arg, int itemid, int parentid) {
+void add_child(node_c * child, int var, char *element, int itemid, int parentid) {
 	node_c * child_current = child;
 
 	while (child_current->next != NULL) {
@@ -65,7 +65,7 @@ void add_child(node_c * child, int var, char *arg, int itemid, int parentid) {
 	child_current->itemid = itemid;
 	child_current->parentid = parentid;
 	child_current->var = var;
-	child_current->element = arg;
+	child_current->element = element;
 	child_current->next = NULL;
 }
 
@@ -97,8 +97,9 @@ char *input() {
 }
 
 void init(node_p * parent, node_c * child) {
-	while (commands(input(), parent, child) != 1) {
-		commands(input(), parent, child);
+	int exit;
+    while (exit != 1) {
+		exit = commands(input(), parent, child);
 	}
 }
 
@@ -119,14 +120,13 @@ int commands(char *cmd, node_p * parent, node_c * child) {
 
 
 void cmdParent(node_p * parent) {
-	node_p * ptemp = parent;
+	node_p * ptemp;
 	ptemp = malloc(sizeof(node_p));
 
 	printf("Id: ");
 	scanf("%d", &ptemp->itemid);
 	printf("\nElement: ");
-	ptemp->element = input();
-	getchar();
+    ptemp->element = input();
 
 	add_parent_node(parent, ptemp->itemid, ptemp->element);
 
@@ -134,7 +134,7 @@ void cmdParent(node_p * parent) {
 }
 
 void cmdChild(node_c * child) {
-	node_c * ctemp = child;
+	node_c * ctemp;
 	ctemp = malloc(sizeof(node_c));
 
 	printf("Var: ");
@@ -145,7 +145,6 @@ void cmdChild(node_c * child) {
 	scanf("%d", &ctemp->parentid);
 	printf("\nElement: ");
 	ctemp->element = input();
-	getchar();
 
 	add_child(child, ctemp->var, ctemp->element, ctemp->itemid, ctemp->parentid);
 
