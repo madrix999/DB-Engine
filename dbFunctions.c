@@ -126,7 +126,7 @@ void cmdParent(node_p * parent) {
 	printf("Id: ");
 	scanf("%d", &ptemp->itemid);
 	printf("\nElement: ");
-    ptemp->element = input();
+	ptemp->element = input();
 
 	add_parent_node(parent, ptemp->itemid, ptemp->element);
 
