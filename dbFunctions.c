@@ -5,5 +5,11 @@
 #include "Functions.h"
 
 int init() {
-
+	puts("It Works");
+	node_t * head = NULL;
+	head = malloc(sizeof(node_t);
+	if (head == NULL) {
+		return 1;
+	}
 }
+
