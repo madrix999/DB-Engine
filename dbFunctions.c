@@ -11,5 +11,10 @@ int init() {
 	if (head == NULL) {
 		return 1;
 	}
+	
+	head->val = 1
+	head->next = malloc(sizeof(node_t));
+	head->next->val = 2;
+	head->next->next = null;
 }
 
