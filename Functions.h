@@ -1,11 +1,6 @@
 #ifndef FUNCTIONS_H_INCLUDED
 #define FUNCTIONS_H_INCLUDED
 
-typedef struct node {
-	int val;
-	struct node * next;
-} node_t;
-
 void print_list(node_t * head);
 int push_end(node_t * head, int val);
 int push_beginning(node_t ** head, int val);

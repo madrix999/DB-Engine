@@ -2,23 +2,12 @@
 #define DBENGINE_FUNCTIONS_H
 
 // Parent node, contains itemid, element(children) and pointer to next parent node
-typedef struct parent {
-	int itemid;
-	struct parent * next;
-	struct child * children;
-	char *element;
-} node_p;
+typedef struct node {
+	char items[2]; 
+	struct node * next;
+} node_db;
 
-// Children node, contains data and pointer to parent node
-typedef struct child {
-	int var;
-	int itemid;
-	int parentid;
-	struct child * next;
-	char *element;
-} node_c;
-
-int init();
-char *input();
+int readFile(char *import[]);
+void add_node(node_db * head, char *items[]);
 
 #endif
